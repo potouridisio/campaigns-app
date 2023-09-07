@@ -17,15 +17,6 @@ const Table = forwardRef<
 
 Table.displayName = 'Table'
 
-const TableHeader = forwardRef<
-  HTMLTableSectionElement,
-  React.HTMLAttributes<HTMLTableSectionElement>
->(({ className, ...props }, ref) => (
-  <thead className={cn('[&_tr]:border-b', className)} ref={ref} {...props} />
-))
-
-TableHeader.displayName = 'TableHeader'
-
 const TableBody = forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
@@ -39,6 +30,32 @@ const TableBody = forwardRef<
 
 TableBody.displayName = 'TableBody'
 
+const TableCaption = forwardRef<
+  HTMLTableCaptionElement,
+  React.HTMLAttributes<HTMLTableCaptionElement>
+>(({ className, ...props }, ref) => (
+  <caption
+    className={cn('mt-4 text-sm text-muted-foreground', className)}
+    ref={ref}
+    {...props}
+  />
+))
+
+TableCaption.displayName = 'TableCaption'
+
+const TableCell = forwardRef<
+  HTMLTableCellElement,
+  React.TdHTMLAttributes<HTMLTableCellElement>
+>(({ className, ...props }, ref) => (
+  <td
+    className={cn('p-4 align-middle [&:has([role=checkbox])]:pr-0', className)}
+    ref={ref}
+    {...props}
+  />
+))
+
+TableCell.displayName = 'TableCell'
+
 const TableFooter = forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
@@ -51,22 +68,6 @@ const TableFooter = forwardRef<
 ))
 
 TableFooter.displayName = 'TableFooter'
-
-const TableRow = forwardRef<
-  HTMLTableRowElement,
-  React.HTMLAttributes<HTMLTableRowElement>
->(({ className, ...props }, ref) => (
-  <tr
-    className={cn(
-      'border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted',
-      className
-    )}
-    ref={ref}
-    {...props}
-  />
-))
-
-TableRow.displayName = 'TableRow'
 
 const TableHead = forwardRef<
   HTMLTableCellElement,
@@ -84,39 +85,38 @@ const TableHead = forwardRef<
 
 TableHead.displayName = 'TableHead'
 
-const TableCell = forwardRef<
-  HTMLTableCellElement,
-  React.TdHTMLAttributes<HTMLTableCellElement>
+const TableHeader = forwardRef<
+  HTMLTableSectionElement,
+  React.HTMLAttributes<HTMLTableSectionElement>
 >(({ className, ...props }, ref) => (
-  <td
-    className={cn('p-4 align-middle [&:has([role=checkbox])]:pr-0', className)}
+  <thead className={cn('[&_tr]:border-b', className)} ref={ref} {...props} />
+))
+
+TableHeader.displayName = 'TableHeader'
+
+const TableRow = forwardRef<
+  HTMLTableRowElement,
+  React.HTMLAttributes<HTMLTableRowElement>
+>(({ className, ...props }, ref) => (
+  <tr
+    className={cn(
+      'border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted',
+      className
+    )}
     ref={ref}
     {...props}
   />
 ))
 
-TableCell.displayName = 'TableCell'
-
-const TableCaption = forwardRef<
-  HTMLTableCaptionElement,
-  React.HTMLAttributes<HTMLTableCaptionElement>
->(({ className, ...props }, ref) => (
-  <caption
-    className={cn('mt-4 text-sm text-muted-foreground', className)}
-    ref={ref}
-    {...props}
-  />
-))
-
-TableCaption.displayName = 'TableCaption'
+TableRow.displayName = 'TableRow'
 
 export {
   Table,
-  TableHeader,
   TableBody,
+  TableCaption,
+  TableCell,
   TableFooter,
   TableHead,
+  TableHeader,
   TableRow,
-  TableCell,
-  TableCaption,
 }
