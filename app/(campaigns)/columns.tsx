@@ -1,3 +1,5 @@
+'use client'
+
 import type { ColumnDef } from '@tanstack/react-table'
 
 import type { Campaign } from '../api/campaigns/campaign'
@@ -6,6 +8,11 @@ export const columns: ColumnDef<Campaign>[] = [
   {
     accessorKey: 'name',
     header: 'Name',
+    cell: (props) => (
+      <span className="font-medium">
+        {`${props.row.original.id} - ${props.getValue() as string}`}
+      </span>
+    ),
   },
   {
     accessorFn: (row) => row.panels.map((panel) => panel.name).join(', '),
