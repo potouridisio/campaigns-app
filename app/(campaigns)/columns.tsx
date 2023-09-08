@@ -20,7 +20,16 @@ export const columns: ColumnDef<Campaign>[] = [
   },
   {
     accessorKey: 'completed',
-    header: 'Completes',
+    header: () => <div className="text-right">Completes</div>,
+    cell: (props) => (
+      <div className="text-right">
+        {`${props.getValue() as number}${
+          props.row.original.max_completes_total
+            ? `/${props.row.original.max_completes_total}`
+            : ''
+        }`}
+      </div>
+    ),
   },
   {
     accessorKey: 'median_loi',
