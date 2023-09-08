@@ -1,5 +1,6 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import type { ColumnDef } from '@tanstack/react-table'
 
 import type { Campaign } from '../api/campaigns/campaign'
@@ -33,7 +34,23 @@ export const columns: ColumnDef<Campaign>[] = [
   },
   {
     accessorKey: 'median_loi',
-    header: 'LOI',
+    header: () => <div className="text-right">LOI</div>,
+    cell: ({ row }) => {
+      const medianLoi = row.getValue('median_loi') as number | null
+      const medianLoiInMinutes = Math.round((medianLoi || 0) / 60)
+
+      return (
+        <div
+          className={cn(
+            'text-right',
+            row.original.loi_tolerance_exceeded === true && 'text-red-500',
+            row.original.loi_tolerance_exceeded === false && 'text-green-500'
+          )}
+        >
+          {row.original.first_went_live_at ? `${medianLoiInMinutes}m` : '-'}
+        </div>
+      )
+    },
   },
   {
     accessorKey: 'incidence_rate',
