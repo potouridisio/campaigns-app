@@ -92,7 +92,10 @@ export const columns: ColumnDef<Campaign>[] = [
   },
   {
     accessorKey: 'broken_reports',
-    header: 'Broken reports',
+    header: () => <div className="text-right">Broken reports</div>,
+    cell: (props) => (
+      <div className="text-right">{props.getValue() as number}</div>
+    ),
   },
   {
     accessorKey: 'disqualified',
