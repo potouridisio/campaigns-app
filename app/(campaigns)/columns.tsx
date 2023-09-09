@@ -71,7 +71,10 @@ export const columns: ColumnDef<Campaign>[] = [
   },
   {
     accessorKey: 'screened',
-    header: 'Screeners',
+    header: () => <div className="text-right">Screeners</div>,
+    cell: (props) => (
+      <div className="text-right">{props.getValue() as number}</div>
+    ),
   },
   {
     accessorKey: 'incomplete',
