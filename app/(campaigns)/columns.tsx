@@ -111,5 +111,22 @@ export const columns: ColumnDef<Campaign>[] = [
   {
     accessorKey: 'campaign_target_enddate',
     header: 'End date',
+    cell: ({ row }) => {
+      const campaignTargetEnddate = row.getValue('campaign_target_enddate') as
+        | string
+        | null
+
+      if (campaignTargetEnddate === null) {
+        return '-'
+      }
+
+      const date = new Date(campaignTargetEnddate)
+
+      return date.toLocaleDateString('en-GB', {
+        month: 'short',
+        day: '2-digit',
+        year: 'numeric',
+      })
+    },
   },
 ]
