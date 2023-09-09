@@ -54,7 +54,20 @@ export const columns: ColumnDef<Campaign>[] = [
   },
   {
     accessorKey: 'incidence_rate',
-    header: 'IR',
+    header: () => <div className="text-right">IR</div>,
+    cell: (props) => (
+      <div
+        className={cn(
+          'text-right',
+          props.row.original.ir_tolerance_exceeded === true && 'text-red-500',
+          props.row.original.ir_tolerance_exceeded === false && 'text-green-500'
+        )}
+      >
+        {props.row.original.first_went_live_at
+          ? `${props.getValue() as number}%`
+          : '-'}
+      </div>
+    ),
   },
   {
     accessorKey: 'screened',
