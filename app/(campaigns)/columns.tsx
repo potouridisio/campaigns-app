@@ -99,7 +99,10 @@ export const columns: ColumnDef<Campaign>[] = [
   },
   {
     accessorKey: 'disqualified',
-    header: 'Disqualified',
+    header: () => <div className="text-right">Disqualified</div>,
+    cell: (props) => (
+      <div className="text-right">{props.getValue() as number}</div>
+    ),
   },
   {
     accessorFn: (row) => row.status_text,
