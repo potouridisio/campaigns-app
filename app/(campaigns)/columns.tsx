@@ -85,7 +85,10 @@ export const columns: ColumnDef<Campaign>[] = [
   },
   {
     accessorKey: 'quota_full',
-    header: 'Quota full',
+    header: () => <div className="text-right">Quota full</div>,
+    cell: (props) => (
+      <div className="text-right">{props.getValue() as number}</div>
+    ),
   },
   {
     accessorKey: 'broken_reports',
