@@ -18,6 +18,10 @@ export default function SettingsLayout({
       title: 'Appearance',
       href: `/${params.id}/settings/appearance`,
     },
+    {
+      title: 'Controls',
+      href: `/${params.id}/settings/controls`,
+    },
   ]
 
   return (
