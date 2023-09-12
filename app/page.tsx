@@ -1,4 +1,4 @@
-import { getCampaigns } from '../api/campaigns/get-campaigns'
+import { getCampaigns } from './api/campaigns/get-campaigns'
 import { columns } from './columns'
 import { DataTable } from './data-table'
 

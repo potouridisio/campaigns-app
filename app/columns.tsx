@@ -14,7 +14,7 @@ import {
 import { cn } from '@/lib/utils'
 import type { ColumnDef } from '@tanstack/react-table'
 
-import type { Campaign } from '../api/campaigns/campaign'
+import type { Campaign } from './api/campaigns/campaign'
 
 const deleteOption = <DropdownMenuItem>Delete</DropdownMenuItem>
 
