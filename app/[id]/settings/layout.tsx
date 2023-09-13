@@ -22,6 +22,10 @@ export default function SettingsLayout({
       title: 'Controls',
       href: `/${params.id}/settings/controls`,
     },
+    {
+      title: 'Quotas',
+      href: `/${params.id}/settings/quotas`,
+    },
   ]
 
   return (
