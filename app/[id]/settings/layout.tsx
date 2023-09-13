@@ -26,6 +26,10 @@ export default function SettingsLayout({
       title: 'Quotas',
       href: `/${params.id}/settings/quotas`,
     },
+    {
+      title: 'Payouts',
+      href: `/${params.id}/settings/payouts`,
+    },
   ]
 
   return (
