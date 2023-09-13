@@ -12,23 +12,23 @@ export default function SettingsLayout({
   const sidebarNavItems = [
     {
       title: 'Basics',
-      href: `/${params.id}/settings`,
+      href: `/campaigns/${params.id}/settings`,
     },
     {
       title: 'Appearance',
-      href: `/${params.id}/settings/appearance`,
+      href: `/campaigns/${params.id}/settings/appearance`,
     },
     {
       title: 'Controls',
-      href: `/${params.id}/settings/controls`,
+      href: `/campaigns/${params.id}/settings/controls`,
     },
     {
       title: 'Quotas',
-      href: `/${params.id}/settings/quotas`,
+      href: `/campaigns/${params.id}/settings/quotas`,
     },
     {
       title: 'Payouts',
-      href: `/${params.id}/settings/payouts`,
+      href: `/campaigns/${params.id}/settings/payouts`,
     },
   ]
 
