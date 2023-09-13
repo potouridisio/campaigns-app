@@ -21,6 +21,7 @@ const Label = forwardRef<
     {...props}
   />
 ))
+
 Label.displayName = LabelPrimitive.Root.displayName
 
 export { Label }
