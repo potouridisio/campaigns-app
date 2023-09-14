@@ -14,7 +14,7 @@ import {
 import { cn } from '@/lib/utils'
 import type { ColumnDef } from '@tanstack/react-table'
 
-import type { Campaign } from '../api/campaigns/campaign'
+import type { Campaign } from './page'
 
 const deleteOption = <DropdownMenuItem>Delete</DropdownMenuItem>
 
@@ -141,9 +141,9 @@ export const columns: ColumnDef<Campaign>[] = [
     cell: ({ row }) => {
       const campaignTargetEnddate = row.getValue('campaign_target_enddate') as
         | string
-        | null
+        | undefined
 
-      if (campaignTargetEnddate === null) {
+      if (!campaignTargetEnddate) {
         return '-'
       }
 
@@ -171,15 +171,15 @@ export const columns: ColumnDef<Campaign>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            {campaign.status === 'C' ? generateFilesOptions : null}
-            {campaign.status === 'D' ? deleteOption : null}
-            {campaign.status === 'L' ? (
+            {campaign.status_text === 'Completed' ? generateFilesOptions : null}
+            {campaign.status_text === 'Draft' ? deleteOption : null}
+            {campaign.status_text === 'Live' ? (
               <>
                 {generateFilesOptions}
                 {manageOptions}
               </>
             ) : null}
-            {campaign.status === 'P' ? (
+            {campaign.status_text === 'Paused' ? (
               <>
                 <DropdownMenuItem>Mark complete</DropdownMenuItem>
                 <DropdownMenuSeparator />
@@ -187,7 +187,7 @@ export const columns: ColumnDef<Campaign>[] = [
                 {manageOptions}
               </>
             ) : null}
-            {campaign.status === 'R' ? deleteOption : null}
+            {campaign.status_text === 'Ready' ? deleteOption : null}
           </DropdownMenuContent>
         </DropdownMenu>
       )
